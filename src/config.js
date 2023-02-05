@@ -1,6 +1,6 @@
 const Config = {
-    baseUrl: 'localhost:6666/api',     // Localhost 
-    // baseUrl: 'https://ticket-creation-module-backend.vercel.app/ticketsmodule/api/v1',  // Production 
+    baseUrl: 'http://localhost:8000/api',     // Localhost 
+    // baseUrl: 'https://restaurant-onboarding-server.vercel.app/api',  // Production 
 };
 
 export default Config;
