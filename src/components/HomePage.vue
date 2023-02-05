@@ -1,19 +1,14 @@
 <template>
     <div id="mainDiv">
-        <!-- <pre>{{ selectedCountry }}  {{ selectedState }} {{ selectedCity }}  </pre>
-        <pre>{{ location }}</pre> -->
         <NavBar class="nav-bar" />
 
         <div class="outerDiv">
-            <!-- <div id="imageDiv">
-            </div> -->
+
             <div class="imgDiv">
                 <img src="../assets/image/food.svg" alt="">
-                <h1>
-                    Step into a world of delicious possibilities
-                </h1>
-
+                <h1>  Step into a world of delicious possibilities </h1>
             </div>
+
             <div class="formDiv">
 
                 <h2> Unlock a world of taste with every visit</h2>
@@ -23,7 +18,7 @@
                     <div class="restaurant-and-contact">
 
                         <div class="form-group inputField">
-                            <!-- <label for="restaurantName">Restaurant Name:</label> -->
+                          
                             <input type="text" class="input" id="restaurantName" v-model.trim="$v.restaurantName.$model"
                                 :class="{
                                     'is-valid': !$v.restaurantName.$invalid,
@@ -35,7 +30,7 @@
                         </div>
 
                         <div class="form-group inputField">
-                            <!-- <label for="contactName">Contact Name:</label> -->
+                      
                             <input type="text" class="input" id="contactName" v-model.trim="$v.contactName.$model"
                                 :class="{
                                     'is-valid': !$v.contactName.$invalid,
@@ -51,7 +46,7 @@
                     <div class="pincode-and-website">
 
                         <div class="form-group inputField">
-                            <!-- <label for="pincode">Pincode:</label> -->
+                    
                             <input type="text" class="input" id="pincode" v-model.trim="$v.pincode.$model" :class="{
                                 'is-valid': !$v.pincode.$invalid,
                                 'is-invalid': $v.pincode.$error,
@@ -64,7 +59,7 @@
                         </div>
 
                         <div class="form-group inputField">
-                            <!-- <label for="website">Website:</label> -->
+                           
                             <input type="text" class="input" id="website" v-model.trim="$v.website.$model" :class="{
                                 'is-valid': !$v.website.$invalid,
                                 'is-invalid': $v.website.$error,
@@ -88,10 +83,6 @@
                                 }}
                                 </option>
                             </select>
-
-                            <!-- <div class="invalid-feedback">
-                                <span v-if="!$v.country.required">Country is required !</span>
-                            </div> -->
                         </div>
 
                         <div class="form-group inputField locationDiv">
@@ -119,7 +110,6 @@
                     <div class="phoneNumber-and-transaction">
 
                         <div class="form-group inputField">
-                            <!-- <label for="phoneNumber">Phone Number:</label> -->
                             <input type="text" class="input" id="phoneNumber" placeholder="phoneNumber"
                                 v-model.trim="$v.phoneNumber.$model" :class="{
                                     'is-valid': !$v.phoneNumber.$invalid,
@@ -133,7 +123,6 @@
                         </div>
 
                         <div class="form-group inputField">
-                            <!-- <label for="averageTransactions">Average Transactions:</label> -->
                             <input type="Number" class="input" id="averageTransactions"
                                 placeholder="Average transaction..." v-model.trim="$v.averageTransactions.$model"
                                 :class="{
@@ -368,16 +357,15 @@ export default {
 .outerDiv {
     display: flex;
     height: 100vh;
-    /* background: rgb(209, 87, 17); */
-    /* background: #4c44e3; */
-    background :#fc7c6c;
-    
+    background: #fc7c6c;
+
 }
+
 h1 {
-    /* margin: auto; */
     text-align: center;
     color: #d0d0d0;
 }
+
 .imgDiv {
     display: flex;
     width: 40%;
@@ -386,23 +374,12 @@ h1 {
     justify-content: center;
 }
 
-/* #imageDiv {
-    background: #cd6060;
-    width: 500px;
-    height: 100vh;
-} */
-
-
-/* h1 {
-    align-self: center;
-} */
-
 img {
     width: 250px;
-   
+
     align-self: center;
     justify-content: center;
-    margin: 20px auto ;
+    margin: 20px auto;
 }
 
 .formDiv {
@@ -413,17 +390,12 @@ img {
     align-items: center;
     justify-content: center;
     height: 100%;
-    /* background: #346085;
-     */
-    /* background: #290248; */
-    background:#fc7c6c;
-    /* margin-top: 100px; */
+    background: #fc7c6c;
 
 }
 
 .inputField {
     margin: 20px;
-    /* background: #e06464; */
 }
 
 .restaurant-and-contact,
