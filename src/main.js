@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Router from 'vue-router';
+import Vuelidate from 'vuelidate';
 import router from './router'
 import { BootstrapVueIcons , BootstrapVue } from 'bootstrap-vue';
 
@@ -14,6 +15,7 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 
 Vue.config.productionTip = false
+Vue.use(Vuelidate);
 Vue.use(Router);
 Vue.use( BootstrapVue );
 Vue.use( BootstrapVueIcons );

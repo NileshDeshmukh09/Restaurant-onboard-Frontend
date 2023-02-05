@@ -1,73 +1,142 @@
 <template>
     <div>
+
+        <pre>{{ selectedCountry }}  {{ selectedState }} {{ selectedCity }}  </pre>
+        <pre>{{ location }}</pre>
         <form>
             <div class="form-group">
                 <label for="restaurantName">Restaurant Name:</label>
-                <input type="text" id="restaurantName" v-model="restaurantName" @input="validateRestaurantName" />
-                <div v-if="errors.restaurantName" class="error">{{ errors.restaurantName }}</div>
+                <input type="text" id="restaurantName" v-model.trim="$v.restaurantName.$model" :class="{
+                    'is-valid': !$v.restaurantName.$invalid,
+                    'is-invalid': $v.restaurantName.$error,
+                }" />
+                <div class="invalid-feedback">
+                    <span v-if="!$v.restaurantName.required">restaurantName is required !</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="contactName">Contact Name:</label>
-                <input type="text" id="contactName" v-model="contactName" @input="validateContactName" />
-                <div v-if="errors.contactName" class="error">{{ errors.contactName }}</div>
+                <input type="text" id="contactName" v-model.trim="$v.contactName.$model" :class="{
+                    'is-valid': !$v.contactName.$invalid,
+                    'is-invalid': $v.contactName.$error,
+                }" />
+                <!-- <div v-if="errors.contactName" class="error">{{ errors.contactName }}</div> -->
+                <div class="invalid-feedback">
+                    <span v-if="!$v.contactName.required">contactName is required !</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="pincode">Pincode:</label>
-                <input type="text" id="pincode" v-model="pincode" @input="validatePincode" />
-                <div v-if="errors.pincode" class="error">{{ errors.pincode }}</div>
+                <input type="text" id="pincode" v-model.trim="$v.pincode.$model" :class="{
+                    'is-valid': !$v.pincode.$invalid,
+                    'is-invalid': $v.pincode.$error,
+                }" />
+                <!-- <div v-if="errors.pincode" class="error">{{ errors.pincode }}</div> -->
+                <div class="invalid-feedback">
+                    <span v-if="!$v.pincode.required">pincode is required !</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="country">Country :</label>
-                <!-- <input type="text" id="country" v-model="country" @input="validateCountry" />
+                <!-- <input type="text" id="country" v-model.trim="country" @input="validateCountry" />
                 <div v-if="errors.country" class="error">{{ errors.country }}</div> -->
-                <select v-model="selectedCountry" style="width : 300px">
+                <select v-model.trim="selectedCountry" style="width : 300px" :class="{
+                    'is-valid': !$v.pincode.$invalid,
+                    'is-invalid': $v.pincode.$error,
+                }">
                     <option v-for="country in countries" :key="country.country_name">{{ country.country_name }}</option>
                 </select>
+
+                <div class="invalid-feedback">
+                    <span v-if="!$v.pincode.required">pincode is required !</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="state">State :</label>
-                <input type="text" id="state" v-model="state" @input="validateState" />
-                <div v-if="errors.state" class="error">{{ errors.state }}</div>
+                <!-- <input type="text" id="state" v-model.trim="state" @input="validateState" />
+                <div v-if="errors.state" class="error">{{ errors.state }}</div> -->
+                <select style="width : 300px" v-model.trim="selectedState" :class="{
+                    'is-valid': !$v.contactName.$invalid,
+                    'is-invalid': $v.contactName.$error,
+                }">
+                    <option v-for="state in states" :key="state.state_name">{{ state.state_name }}</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    <span v-if="!$v.pincode.required">pincode is required !</span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="city">City :</label>
-                <input type="text" id="city" v-model="city" @input="validateCity" />
-                <div v-if="errors.city" class="error">{{ errors.city }}</div>
+                <!-- <input type="text" id="city" v-model.trim="city" @input="validateCity" />
+                <div v-if="errors.city" class="error">{{ errors.city }}</div> -->
+                <select style="width : 300px" v-model.trim="selectedCity" :class="{
+                    'is-valid': !$v.contactName.$invalid,
+                    'is-invalid': $v.contactName.$error,
+                }">
+                    <option v-for="city in cities" :key="city.city_name">{{ city.city_name }}</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    <span v-if="!$v.pincode.required">pincode is required !</span>
+                </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="location">Location:</label>
-                <input type="text" id="location" v-model="location" @input="validateLocation" />
+                <input type="text" id="location" v-model.trim="location" @input="validateLocation" />
                 <div v-if="errors.location" class="error">{{ errors.location }}</div>
-            </div>
+            </div> -->
 
-            <div class="form-group">
-                <label for="website">Website:</label>
-                <input type="text" id="website" v-model="website" @input="validateWebsite" />
-                <div v-if="errors.website" class="error">{{ errors.website }}</div>
-            </div>
+                <div class="form-group">
+                    <label for="website">Website:</label>
+                    <input type="text" id="website" v-model.trim="website" :class="{
+                        'is-valid': !$v.contactName.$invalid,
+                        'is-invalid': $v.contactName.$error,
+                    }" />
+                    <!-- <div v-if="errors.website" class="error">{{ errors.website }}</div> -->
+                    <div class="invalid-feedback">
+                        <span v-if="!$v.pincode.required">pincode is required !</span>
+                    </div>
 
-            <div class="form-group">
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="text" id="phoneNumber" v-model="phoneNumber" @input="validatePhoneNumber" />
-                <div v-if="errors.phoneNumber" class="error">{{ errors.phoneNumber }}</div>
-            </div>
+                </div>
 
-            <div class="form-group">
-                <label for="averageTransactions">Average Transactions:</label>
-                <input type="text" id="averageTransactions" v-model="averageTransactions"
-                    @input="validateAverageTransactions" />
-                <div v-if="errors.averageTransactions" class="error">{{ errors.averageTransactions }}</div>
-            </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" v-model.trim="phoneNumber" :class="{
+                        'is-valid': !$v.contactName.$invalid,
+                        'is-invalid': $v.contactName.$error,
+                    }" />
+                    <!-- <div v-if="errors.phoneNumber" class="error">{{ errors.phoneNumber }}</div> -->
 
-            <button @click.prevent="submitForm">Submit</button>
-            <div v-if="submitSuccess" class="success">Form submitted successfully</div>
-            <div v-if="submitError" class="error">{{ submitError }}</div>
+                    <div class="invalid-feedback">
+                        <span v-if="!$v.pincode.required">pincode is required !</span>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="averageTransactions">Average Transactions:</label>
+                    <input type="text" id="averageTransactions" v-model.trim="averageTransactions" :class="{
+                        'is-valid': !$v.contactName.$invalid,
+                        'is-invalid': $v.contactName.$error,
+                    }" />
+                    <!-- <div v-if="errors.averageTransactions" class="error">{{ errors.averageTransactions }}</div> -->
+
+                    <div class="invalid-feedback">
+                        <span v-if="!$v.pincode.required">pincode is required !</span>
+                    </div>
+
+                </div>
+
+                <button @click.prevent="submitForm">Submit</button>
+                <div v-if="submitSuccess" class="success">Form submitted successfully</div>
+                <div v-if="submitError" class="error">{{ submitError }}</div>
         </form>
     </div>
 </template>
@@ -76,7 +145,10 @@
   
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import {
+    required,
+} from "vuelidate/lib/validators";
 export default {
     name: "HomePage",
     data() {
@@ -84,9 +156,6 @@ export default {
             restaurantName: '',
             contactName: '',
             pincode: '',
-            country: '',
-            state: '',
-            city: '',
             location: '',
             website: '',
             phoneNumber: '',
@@ -95,9 +164,9 @@ export default {
                 restaurantName: '',
                 contactName: '',
                 pincode: '',
-                country: '',
-                state: '',
-                city: '',
+                selectedCountry: null,
+                selectedState: null,
+                selectedCity: null,
                 location: '',
                 website: '',
                 phoneNumber: '',
@@ -106,8 +175,52 @@ export default {
             submitSuccess: false,
             submitError: '',
             countries: [],
+            states: [],
+            cities: [],
             selectedCountry: null,
+            selectedState: null,
+            selectedCity: null,
+
         };
+    },
+
+    validations: {
+
+        restaurantName: {
+            required
+        },
+
+        contactName: {
+            required
+        },
+
+        pincode: {
+            required
+        },
+
+        country: {
+            required
+        },
+
+        state: {
+            required
+        },
+
+        city: {
+            required
+        },
+
+        website: {
+            required
+        },
+
+        phoneNumber: {
+            required
+        },
+
+        averageTransactions: {
+            required
+        },
     },
 
 
@@ -115,7 +228,19 @@ export default {
         this.getCountries();
     },
 
-    
+    watch: {
+        selectedCountry(country) {
+            console.log("Whatched : ")
+            this.getStates(country);
+        },
+
+        selectedState(state) {
+            console.log("State : ")
+            this.getCities(state);
+        },
+    },
+
+
     methods: {
 
         // Access token for 
@@ -158,6 +283,47 @@ export default {
             }
         },
 
+
+        // GET States
+        async getStates(country) {
+            try {
+                const accessToken = await this.getAccessToken();
+                const response = await axios.get(
+                    `https://www.universal-tutorial.com/api/states/${country}`,
+                    {
+                        headers: {
+                            Authorization: "Bearer " + accessToken,
+                        },
+                    }
+                );
+                console.log("Response : ", response.data[0]);
+                this.states = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        // GET Cities
+        async getCities(state) {
+            try {
+
+                const accessToken = await this.getAccessToken();
+                const response = await axios.get(
+                    `https://www.universal-tutorial.com/api/cities/${state}`,
+                    {
+                        headers: {
+                            Authorization: "Bearer " + accessToken,
+                        },
+                    }
+                );
+                console.log("Response : ", response.data[0]);
+                this.cities = response.data;
+
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
         validateRestaurantName() {
             if (!this.restaurantName) {
                 this.errors.restaurantName = 'Restaurant Name is required';
@@ -182,24 +348,24 @@ export default {
             }
         },
         validateCountry() {
-            if (!this.country) {
-                this.errors.country = 'Country is required';
+            if (!this.selectedCountry) {
+                this.errors.selectedCountry = 'Country is required';
             } else {
-                this.errors.country = '';
+                this.errors.selectedCountry = null;
             }
         },
         validateState() {
-            if (!this.state) {
-                this.errors.state = 'State is required';
+            if (!this.selectedState) {
+                this.errors.selectedState = 'State is required';
             } else {
-                this.errors.state = '';
+                this.errors.selectedState = null;
             }
         },
         validateCity() {
-            if (!this.location) {
-                this.errors.city = 'City is required';
+            if (!this.selectedCity) {
+                this.errors.selectedCity = 'City is required';
             } else {
-                this.errors.city = '';
+                this.errors.selectedCity = null;
             }
         },
         validateLocation() {
@@ -240,6 +406,8 @@ export default {
         },
 
         submitForm() {
+
+            this.location = `${this.selectedCity}, ${this.selectedState}, ${this.selectedCountry}`;
             // Validate all fields
             this.validateRestaurantName();
             this.validateContactName();
@@ -249,22 +417,31 @@ export default {
             this.validatePhoneNumber();
             this.validateAverageTransactions();
 
-            if (Object.keys(this.errors).length === 0) {
-                // make API call to submit form
-                // on success
-                this.submitSuccess = true;
-                this.submitError = '';
-                // reset form values
-                this.restaurantName = '';
-                this.contactName = '';
-                this.pincode = '';
-                this.location = '';
-                this.website = '';
-                this.phoneNumber = '';
-                this.averageTransactions = '';
-            } else {
-                this.submitSuccess = false;
-                this.submitError = 'Please fix the errors and try again';
+            this.$v.$touch();
+
+            if (this.$v.$invalid) {
+
+
+
+                if (Object.keys(this.errors).length === 0) {
+                    // make API call to submit form
+                    // on success
+                    this.submitSuccess = true;
+                    this.submitError = '';
+                    // reset form values
+                    this.restaurantName = '';
+                    this.contactName = '';
+                    this.pincode = '';
+                    this.location = '';
+                    this.website = '';
+                    this.phoneNumber = '';
+                    this.averageTransactions = '';
+                } else {
+                    this.submitSuccess = false;
+                    this.submitError = 'Please fix the errors and try again';
+                }
+
+                return;
             }
 
 
