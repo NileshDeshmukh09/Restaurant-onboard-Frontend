@@ -385,7 +385,7 @@ img {
 .formDiv {
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 12px auto 0px auto;
     width: 100%;
     align-items: center;
     justify-content: center;
