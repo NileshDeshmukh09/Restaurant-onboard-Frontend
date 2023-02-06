@@ -6,7 +6,7 @@
 
             <div class="imgDiv">
                 <img src="../assets/image/food.svg" alt="">
-                <h1>  Step into a world of delicious possibilities </h1>
+                <h1> Step into a world of delicious possibilities </h1>
             </div>
 
             <div class="formDiv">
@@ -18,7 +18,7 @@
                     <div class="restaurant-and-contact">
 
                         <div class="form-group inputField">
-                          
+
                             <input type="text" class="input" id="restaurantName" v-model.trim="$v.restaurantName.$model"
                                 :class="{
                                     'is-valid': !$v.restaurantName.$invalid,
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group inputField">
-                      
+
                             <input type="text" class="input" id="contactName" v-model.trim="$v.contactName.$model"
                                 :class="{
                                     'is-valid': !$v.contactName.$invalid,
@@ -46,7 +46,7 @@
                     <div class="pincode-and-website">
 
                         <div class="form-group inputField">
-                    
+
                             <input type="text" class="input" id="pincode" v-model.trim="$v.pincode.$model" :class="{
                                 'is-valid': !$v.pincode.$invalid,
                                 'is-invalid': $v.pincode.$error,
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="form-group inputField">
-                           
+
                             <input type="text" class="input" id="website" v-model.trim="$v.website.$model" :class="{
                                 'is-valid': !$v.website.$invalid,
                                 'is-invalid': $v.website.$error,
@@ -372,6 +372,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 img {
@@ -444,13 +445,20 @@ img {
 @media screen and (max-width: 768px) {
 
     .outerDiv {
-        padding-top: 100px;
-        flex-direction: column;
+        display: block;
+        /* overflow: hidden; */
+        height: 100%;
+        /* padding-top: 100px; */
+        /* flex-direction: column; */
     }
 
+    h2 {
+        text-align: center;
+    }
     .formDiv {
         flex-direction: column;
         flex-wrap: wrap;
+        width: 100%;
     }
 
     .restaurant-and-contact,
@@ -460,6 +468,22 @@ img {
         display: flex;
         flex-direction: column;
     }
+
+    .imgDiv {
+        width: 100%;
+    }
+
+    .input , .locationInput {
+        width: 330px;
+        height: 45px;
+        border: none;
+    }
+
+    img {
+        margin: 60px auto;
+    }
+
+    
 }
 </style>
 
